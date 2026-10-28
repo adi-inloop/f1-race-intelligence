@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>Formula 1 Race Intelligence Dashboard</h1>
+  <p>Interactive analysis of 6,464 race results across 17 seasons, 10 teams and 24 circuits.</p>
+  <a class="btn" href="{{ url_for('dashboard') }}">Open Dashboard</a>
+  <a class="btn alt" href="{{ url_for('story') }}">Read the Story</a>
+</section>
+<section class="cards">
+  <div class="card"><h3>Team Strategist</h3><p>Compare team points, tyre strategy and top drivers.</p></div>
+  <div class="card"><h3>Broadcast Analyst</h3><p>Driver rankings, host nations and podiums.</p></div>
+  <div class="card"><h3>FIA Analyst</h3><p>DNFs by driver, reason and team, and reliability over seasons.</p></div>
+</section>
+<p class="note">Needs an internet connection: the charts are loaded from Tableau Public.</p>
+{% endblock %}

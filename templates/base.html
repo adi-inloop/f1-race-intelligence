@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>F1 Race Intelligence | {% block title %}Home{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <div class="brand">F1 <span>RACE INTELLIGENCE</span> 2010&ndash;2026</div>
+    <nav>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('story') }}">Story</a>
+    </nav>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+  <footer>
+    <span>Data: F1_Racing_Project_Dataset.xlsx &middot; Built with Tableau Public + Flask</span>
+    <span>
+      {% if demo_link %}<a href="{{ demo_link }}" target="_blank" rel="noopener">Demo</a>{% else %}Demo link: (to be added){% endif %}
+      &middot;
+      {% if github_link %}<a href="{{ github_link }}" target="_blank" rel="noopener">GitHub</a>{% else %}GitHub link: (to be added){% endif %}
+    </span>
+  </footer>
+</body>
+</html>

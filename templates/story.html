@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<h2>{{ title }}</h2>
+{% if viz_url %}
+  <div class="viz-wrap">
+    <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+    <tableau-viz id="tableauViz" src="{{ viz_url }}" toolbar="bottom" hide-tabs></tableau-viz>
+  </div>
+  <p class="note">Use the filters and the Top N control inside the viz. The workbook must be public on Tableau Public.</p>
+{% else %}
+  <div class="placeholder">
+    <p><strong>No Tableau Public URL set yet.</strong></p>
+    <p>Publish the workbook, then paste the view URL into <code>app.py</code>.</p>
+  </div>
+{% endif %}
+{% endblock %}

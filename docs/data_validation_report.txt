@@ -1,0 +1,163 @@
+=== 1. SHEETS AND SIZES ===
+circuits                  rows=   29 cols=9
+championship_standings    rows=  311 cols=10
+lap_intelligence          rows= 3814 cols=14
+qualifying_results        rows= 3130 cols=16
+race_results              rows= 6464 cols=42
+Total rows: 13748
+
+=== 2. race_results COLUMN TYPES (what Tableau should show) ===
+race_id                str      -> String
+season                 int64    -> Number (whole)
+round                  int64    -> Number (whole)
+circuit_id             str      -> String
+circuit_name           str      -> String
+country                str      -> String
+city                   str      -> String
+race_date              str      -> Text in Excel -> change to Date in Tableau
+circuit_type           str      -> String
+circuit_laps           int64    -> Number (whole)
+circuit_length_km      float64  -> Number (decimal)
+total_distance_km      float64  -> Number (decimal)
+altitude_m             int64    -> Number (whole)
+direction              str      -> String
+weather                str      -> String
+is_wet_race            int64    -> Number (whole)
+air_temp_celsius       float64  -> Number (decimal)
+humidity_pct           float64  -> Number (decimal)
+wind_speed_kmh         float64  -> Number (decimal)
+safety_car_laps        int64    -> Number (whole)
+vsc_laps               int64    -> Number (whole)
+red_flag               int64    -> Number (whole)
+finish_position        float64  -> Number (decimal)
+grid_position          int64    -> Number (whole)
+positions_gained       float64  -> Number (decimal)
+driver                 str      -> String
+team                   str      -> String
+points                 int64    -> Number (whole)
+dnf                    int64    -> Number (whole)
+dnf_reason             str      -> String
+fastest_lap            int64    -> Number (whole)
+gap_to_leader_s        float64  -> Number (decimal)
+total_race_time_s      float64  -> Number (decimal)
+pit_stops              int64    -> Number (whole)
+pit_stop_times_s       str      -> String
+avg_pit_stop_time_s    float64  -> Number (decimal)
+tyre_strategy          str      -> String
+starting_compound      str      -> String
+undercut_attempt       int64    -> Number (whole)
+overcut_attempt        int64    -> Number (whole)
+drs_overtakes          int64    -> Number (whole)
+laps_led               int64    -> Number (whole)
+Column count: 42
+
+=== 3. NULL CHECK (race_results) ===
+finish_position       396
+positions_gained      396
+dnf_reason           6068
+gap_to_leader_s       396
+total_race_time_s    6130
+DNF rows: 396 | DNF rows with finish_position null: 396 | DNF rows missing reason: 0
+Duplicate rows: 0
+
+=== 4. KPI VALUES ===
+Competing Teams     : 10
+Seasons in Play     : 17
+Race Outcomes Logged: 6464
+Circuits Raced      : 24 (circuits sheet lists 29 )
+
+=== 5. KNOWN DATA NOTES ===
+Rows where race_date year != season: 80 -> use season for the Year filter
+Carlos Sainz rows per race: 2 (kept as-is)
+Races in 2026: 12 (partial season)
+
+=== 6. EXPECTED VALUES FOR TABLEAU CHECKS (no filters applied) ===
+
+Top 10 drivers by total points:
+driver
+Max Verstappen     4640
+Lewis Hamilton     4491
+Sergio Perez       3366
+George Russell     3299
+Charles Leclerc    3243
+Carlos Sainz       3147
+Lando Norris       2454
+Oscar Piastri      1816
+Esteban Ocon       1136
+Pierre Gasly        811
+
+Total points by team:
+team
+Red Bull Racing    8006
+Mercedes           7790
+Ferrari            5778
+McLaren            4270
+Alpine             1947
+Aston Martin       1181
+Williams           1057
+RB (AlphaTauri)     923
+Haas                591
+Kick Sauber         363
+
+DNFs by reason:
+dnf_reason
+Engine           73
+Hydraulics       70
+Mechanical       67
+Brake failure    64
+Gearbox          62
+Collision        60
+
+DNFs by driver (top 5):
+driver
+Carlos Sainz       34
+Sergio Perez       29
+Charles Leclerc    28
+Fernando Alonso    25
+Oscar Piastri      24
+
+Starting compound share (%):
+starting_compound
+Soft            29.2
+Medium          29.1
+Hard            28.6
+Intermediate    13.0
+
+Race rows by country (top 6):
+country
+Bahrain    2168
+USA         400
+Spain       328
+Monaco      328
+Hungary     328
+Canada      308
+
+Total podium finishes: 940
+Podiums by team:
+team
+Mercedes           289
+Red Bull Racing    284
+Ferrari            157
+McLaren            120
+Alpine              32
+Williams            21
+RB (AlphaTauri)     16
+Aston Martin        13
+Haas                 6
+Kick Sauber          2
+Podiums by driver (top 5):
+driver
+Max Verstappen     187
+Lewis Hamilton     174
+George Russell     115
+Charles Leclerc    113
+Sergio Perez        97
+
+Red Bull vs Mercedes points (every 4th season):
+team    Mercedes  Red Bull Racing
+season                           
+2010          83              550
+2014         704               68
+2018         754              335
+2022         280              607
+2026         189              292
